@@ -11,5 +11,4 @@ Precompiled bin file can be found in the "bin" folder.
 [CYD (Cheap Yellow Display) PlatformIo Board definitions](https://github.com/rzeldent/platformio-espressif32-sunton/)
 
 ---
-
 ![Screen image](./images/photo1.jpg)
