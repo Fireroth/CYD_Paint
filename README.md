@@ -2,7 +2,7 @@
 
 The included source code and bin file is made to run on ESP32-2432S028R
 
-For more information on this CYD and its variants, more example projects, mods, and more; check out [Brian Lough's ESP32-Cheap-Yellow-Display GitHub repo](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display).
+For more information on CYDs and its variants, example projects, mods, and more check out [Brian Lough's ESP32-Cheap-Yellow-Display GitHub repo](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display).
 
 Precompiled bin file can be found in the "bin" folder.
 
