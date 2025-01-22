@@ -8,10 +8,10 @@
 #define XPT2046_CS 33
 
 // You might have to change these values depending on your device
-#define TS_MINX 280
-#define TS_MAXX 3750
-#define TS_MINY 280
-#define TS_MAXY 3750
+#define TS_MINX 135
+#define TS_MAXX 3730
+#define TS_MINY 220
+#define TS_MAXY 3830
 
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
@@ -20,7 +20,7 @@ SPIClass mySpi(VSPI);
 TFT_eSPI tft = TFT_eSPI();
 XPT2046_Touchscreen ts(XPT2046_CS, XPT2046_IRQ);
 
-uint16_t colors[] = {TFT_RED, TFT_GREEN, TFT_BLUE, TFT_YELLOW, TFT_CYAN, TFT_MAGENTA, TFT_WHITE};
+uint16_t colors[] = {TFT_RED, TFT_GREEN, TFT_BLUE, TFT_YELLOW, TFT_CYAN, TFT_MAGENTA, TFT_WHITE, TFT_BLACK};
 int currentColorIndex = 0;
 
 #define BUTTON_WIDTH 60
@@ -42,8 +42,8 @@ void setup() {
   tft.fillScreen(TFT_BLACK);
 
   // Draw color selector boxes
-  for (int i = 0; i < 7; i++) {
-    tft.fillRect(i * (SCREEN_WIDTH / 7), 0, SCREEN_WIDTH / 7, 20, colors[i]);
+  for (int i = 0; i < 8; i++) {
+    tft.fillRect(i * (SCREEN_WIDTH / 8), 0, SCREEN_WIDTH / 8, 20, colors[i]);
   }
 
   // Draw the "Clear" button
@@ -58,7 +58,7 @@ void loop() {
 
   if (ts.tirqTouched() && ts.touched()) {
     p = ts.getPoint();
-    if (p.z < 170) return;
+    if (p.z < 380) return;
 
     // Map touch coordinates to screen dimensions
     int x = map(p.x, TS_MINX, TS_MAXX, 0, SCREEN_WIDTH);
@@ -66,14 +66,14 @@ void loop() {
 
     if (y < 20) {
       // Color selector area
-      currentColorIndex = x / (SCREEN_WIDTH / 7);
+      currentColorIndex = x / (SCREEN_WIDTH / 8);
     } else if (x >= BUTTON_X && x <= BUTTON_X + BUTTON_WIDTH && y >= BUTTON_Y && y <= BUTTON_Y + BUTTON_HEIGHT) {
       // Clear screen button area
       tft.fillScreen(TFT_BLACK);
 
       // Redraw color selector boxes
-      for (int i = 0; i < 7; i++) {
-        tft.fillRect(i * (SCREEN_WIDTH / 7), 0, SCREEN_WIDTH / 7, 20, colors[i]);
+      for (int i = 0; i < 8; i++) {
+        tft.fillRect(i * (SCREEN_WIDTH / 8), 0, SCREEN_WIDTH / 8, 20, colors[i]);
       }
 
       // Redraw the "Clear Screen" button
@@ -87,3 +87,4 @@ void loop() {
     }
   }
 }
+

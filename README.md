@@ -12,4 +12,4 @@ Precompiled bin file can be found in the "bin" folder.
 
 ---
 
-PLACEHOLDER IMAGE
+![Screen image](./images/photo1.jpg)
