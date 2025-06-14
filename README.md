@@ -1,4 +1,4 @@
-# Paint project for CYD (Cheap Yellow Display)
+# Paint firmware for CYD (Cheap Yellow Display)
 
 The included source code and bin file is made to run on ESP32-2432S028R
 
